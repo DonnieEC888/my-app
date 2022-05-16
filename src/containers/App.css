@@ -1,0 +1,23 @@
+.app {
+  text-align: center;
+  color: #FFFFFF;
+}
+
+#app-logo {
+  font-size: 6rem;
+  font-weight: 700;
+  color: #FFE69A;
+  margin-bottom: 0;
+}
+
+#app-title {
+  font-weight: 700;
+  font-size: 3rem;
+  margin: 0;
+}
+
+#app-subtitle {
+
+  margin: 0;
+}
+

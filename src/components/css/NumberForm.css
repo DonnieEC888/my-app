@@ -1,0 +1,21 @@
+#form {
+    margin: 10px 0;
+}
+#number {
+    border: none;
+    margin: 10px;
+    padding: 5px 0;
+}
+
+#number:focus{
+    outline: none;
+}
+
+#button {
+    border: none;
+    color: #ffffff;
+    background: #FFD24C;
+    padding: 4px 14px;
+   
+    font-weight: 800;
+}
