@@ -1,48 +1,38 @@
-import React, {Component} from 'react'
+import React, {useState} from 'react'
 import './App.css';
 import NumberForm from  '../components/NumberForm';
 import NumberFact from '../components/NumberFact';
 import ErrorBoundary from '../components/ErrorBoundary';
 
-class App extends Component {
-  constructor() {
-    super() 
-    this.state = {
-      number: '',
-      fact: ''
-    } 
-  }
-  fact = () => {
-    const number = parseInt(this.state.number)
-    isNaN(number) 
-    ? this.setState({fact: 'Please enter a valid number.'}) : 
-      fetch(`http://numbersapi.com/${number}`)
+function App () {
+
+  const [number, setNumber] = useState('')
+  const [fact, setFact] = useState('')
+
+  const facts = () => {
+    const userNumber = parseInt(number)
+    isNaN(userNumber) 
+    ? setFact('Please enter a valid number.') : 
+      fetch(`http://numbersapi.com/${userNumber}`)
       .then(resp => resp.text())
-      .then(data => this.setState({fact: data}))
+      .then(data => setFact(data))
       .catch((err) => console.log(err))
 
     }
    
    
-  
-
-  clearSearch = () => {
-    this.setState({number: ''})
+  const clearSearch = () => {
+    setNumber('')
   }
-  numberSearch = (e) => {
-    const number = e.target.value
-    this.setState({number: number})
+ const  numberSearch = (e) => {
+    setNumber(e.target.value)
   }
-  getFact = (e) => {
-    e.preventDefault()
-      this.fact()
-      this.clearSearch()
+ const  getFact = (e) => {
+      e.preventDefault()
+      facts()
+      clearSearch()
     }
     
-
-  render() {
-    const {fact, number } = this.state
-    const {numberSearch, getFact} = this
     return (
       <div className='app'>
         <h1 id='app-logo'>(Z)</h1>
@@ -56,6 +46,6 @@ class App extends Component {
     
     )
   }
-}
+
 
 export default App;
